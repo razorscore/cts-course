@@ -2,13 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Flex Direction Demonstration</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 0;
+            height: calc(100vh - 20px);
+            width: calc(100vw - 20px);
+            border: 10px solid red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container > .img_blocks {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>The end of times!</h1>
-    <h2>Some content, amirite?</h2>
+    <div class="container">
+        <div class="img_blocks">
+            <img src="https://www.mmalinker.com/forum/download/file.php?avatar=73235_1445080471.jpg" alt="">
+            <img src="https://cdn.colorlib.com/unite/wp-content/uploads/sites/7/2013/03/image-alignment-150x150.jpg" alt="">
+            <img src="https://dieckster.com/wp-content/uploads/2013/07/nyan-cat-150x150.gif" alt="">
+        </div>
+    </div>
 </body>
+
 </html>
