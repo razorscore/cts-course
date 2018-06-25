@@ -1,132 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <title>Error Management in Javascript</title>
+  </head>
+  <body>
+  </body>
 
-    <style>
-        body {
-            margin: 0px;
-        }
+  <script>
+    class DavenError extends Error {
+      constructor(msg = 'An error occured ¯\_(ツ)_/¯', ...params) {
+        super(...params);
 
-        .navbar {
-            background: slateblue;
-        }
+        this.msg = msg;
+      }
+    }
 
-        .navbar div {
-            display: none;
-        }
 
-        .navbar .toggle,
-        .navbar .brand {
-            display: inline-block;
-        }
+    function siteComponent(func) {
+      return func();
+    }
+    
+    widget = () => {
+      return '<div>Hi there</div>';
+    }
 
-        .navbar .link {
-            display: block;
-            text-align: center;
-            padding: 1em;
-            text-decoration: none;
-            background: darkslateblue;
-            color: white;
-        }
-
-        .navbar .link:hover,
-        .navbar .link:active {
-            color: darkslateblue;
-            background: white;
-        }
-
-        .navbar .brand {
-            width: 10em;
-            text-align: center;
-            padding: 1em;
-            color: white;
-        }
-
-        .navbar a {
-            text-decoration: none;
-        }
-
-        .navbar .toggle {
-            padding: 1em;
-            color: white;
-        }
-
-        @media (min-width: 48em) {
-            .navbar {
-                display: flex;
-            }
-
-            .navbar .left,
-            .navbar .right{
-                display: flex;
-                flex: 1;
-            }
-
-            .navbar .link {
-                width: auto;
-            }
-
-            .navbar .right {
-                justify-content: flex-end;
-            }
-
-            .navbar .toggle{
-                display: none;
-            }
-        }
-
-        @media (min-width: 48em) {
-            .navbar div {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 48em) {
-            .navbar .toggle {
-                background: darkslateblue;
-                color: white;
-            }
-
-            .navbar .brand {
-                text-align: left;
-            }
-
-            .navbar.active div {
-                display: block;
-            }
-        }
-
-    </style>
-</head>
-
-<body>
-    <div class="navbar">
-        <a href="#" class="toggle" id="navHamburger">
-            <i class="fas fa-bars"></i>
-        </a>
-        <a href="#" class="brand">MyName</a>
-
-        <div class="left">
-            <a href="#" class="link">Link 1</a>
-            <a href="#" class="link">Link 2</a>
-        </div>
-
-        <div class="right">
-            <a href="#" class="link">Link 3</a>
-        </div>
-    </div>
-</body>
-
-<script>
-    const navHamburger = document.querySelector('#navHamburger');
-
-    navHamburger.addEventListener('click', (e) => {
-        navHamburger.parentElement.classList.toggle('active');
-    })
-</script>
-
+    try {
+      console.log(siteComponent('Screw the government i guess.'));
+    } catch(e) {
+      throw new DavenError('DavenError', e);
+    }
+  </script>
 </html>
