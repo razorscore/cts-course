@@ -8,27 +8,26 @@
   </body>
 
   <script>
-    class DavenError extends Error {
-      constructor(msg = 'An error occured ¯\_(ツ)_/¯', ...params) {
+    class ApiError extends Error {
+      constructor(msg = 'An api error occured', ...params) {
         super(...params);
 
         this.msg = msg;
       }
     }
+    var request = new XMLHttpRequest();
 
+    request.open('GET', 'http://api.dailysmarty.com/posts', true);
 
-    function siteComponent(func) {
-      return func();
-    }
-    
-    widget = () => {
-      return '<div>Hi there</div>';
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+        var data = JSON.parse(request.responseText);
+        console.log(data);
+      } else {
+        throw new ApiError('ApiError', `An API error occured with a status code of ${request.status}`)
+      }
     }
 
-    try {
-      console.log(siteComponent('Screw the government i guess.'));
-    } catch(e) {
-      throw new DavenError('DavenError', e);
-    }
+    request.send();
   </script>
 </html>
