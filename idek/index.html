@@ -8,7 +8,7 @@
 
     <style>
         .hideElement {
-            display: hidden;
+            visibility: hidden;
         }
 
         .showElement {
@@ -17,15 +17,43 @@
     </style>
 </head>
 <body>
-    <div class="mainHeading">
-        <h1>Beeg gorl</h1>
+    <div class='widget showElement'>
+        <div class="mainHeading">
+            <h1>Beeg gorl</h1>
+        </div>
+
+        <div class="subHeading">
+            Smol boye
+        </div>
     </div>
 
-    <div class="subHeading">
-        Smol boye
-    </div>
+    <button onclick="contentToggle()">Toggle Content</button>
 </body>
 <script>
-    // 4:18
+    const widget = document.querySelector('.widget');
+
+    function contentToggle() {
+        if (widget.classList.contains('showElement'))  {
+            widget.classList.remove('showElement');
+            widget.classList.add('hideElement');
+        } else {
+            widget.classList.remove('hideElement');
+            widget.classList.add('showElement');
+        }
+    }
+
+    // const headings = document.querySelectorAll('div');
+
+    // function contentToggle() {
+    //     headings.forEach((heading) => {
+    //         if (heading.classList.contains('showElement'))  {
+    //             heading.classList.remove('showElement');
+    //             heading.classList.add('hideElement');
+    //         } else {
+    //             heading.classList.remove('hideElement');
+    //             heading.classList.add('showElement');
+    //         }
+    //     })
+    // }
 </script>
 </html>
