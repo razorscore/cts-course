@@ -7,53 +7,59 @@
     <title>Document</title>
 
     <style>
-        .hideElement {
-            visibility: hidden;
+        img {
+            width: 400px;
         }
 
-        .showElement {
-            display: block;
+        .container {
+            position: relative;
+            text-align: center;
+            color: black;
+        }
+
+        .show-img-overlay {
+            position: relative;
+            bottom: 340px;
+            font-size: 21px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .hide-img-overlay {
+            position: relative;
+            bottom: 340px;
+            font-size: 21px;
+            color: transparent;
         }
     </style>
 </head>
 <body>
-    <div class='widget showElement'>
-        <div class="mainHeading">
-            <h1>Beeg gorl</h1>
-        </div>
-
-        <div class="subHeading">
-            Smol boye
-        </div>
+    <div class="container">
+        <img src="https://vignette.wikia.nocookie.net/gamegrumps/images/b/b2/DingDong.jpg/revision/latest?cb=20170321233123" class="site-img" alt = "Video game alien"></img>
+        <div class="hide-img-overlay">Dingus Dongus</div>
     </div>
 
-    <button onclick="contentToggle()">Toggle Content</button>
+    <div class="container">
+        <img src="https://vignette.wikia.nocookie.net/oneyplays/images/7/77/Julian.png/revision/latest?cb=20170701151938" class="site-img" alt = "One-eyed gay Mexican"></img>
+        <div class="hide-img-overlay">Joolian Mexicanus</div>
+    </div>
+
 </body>
 <script>
-    const widget = document.querySelector('.widget');
+    const imgs = document.querySelectorAll('.site-img');
 
-    function contentToggle() {
-        if (widget.classList.contains('showElement'))  {
-            widget.classList.remove('showElement');
-            widget.classList.add('hideElement');
-        } else {
-            widget.classList.remove('hideElement');
-            widget.classList.add('showElement');
-        }
-    }
+    imgs.forEach(img => {
+        img.addEventListener('mouseover', (event) => {
+            const captionElement = event.target.parentElement.children[1];
+            captionElement.className = 'show-img-overlay';
+        })
+    })
 
-    // const headings = document.querySelectorAll('div');
-
-    // function contentToggle() {
-    //     headings.forEach((heading) => {
-    //         if (heading.classList.contains('showElement'))  {
-    //             heading.classList.remove('showElement');
-    //             heading.classList.add('hideElement');
-    //         } else {
-    //             heading.classList.remove('hideElement');
-    //             heading.classList.add('showElement');
-    //         }
-    //     })
-    // }
+    imgs.forEach(img => {
+        img.addEventListener('mouseout', (event) => {
+            const captionElement = event.target.parentElement.children[1];
+            captionElement.className = 'hide-img-overlay';
+        })
+    })
+    
 </script>
 </html>
