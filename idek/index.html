@@ -1,65 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
-    <style>
-        img {
-            width: 400px;
-        }
-
-        .container {
-            position: relative;
-            text-align: center;
-            color: black;
-        }
-
-        .show-img-overlay {
-            position: relative;
-            bottom: 340px;
-            font-size: 21px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .hide-img-overlay {
-            position: relative;
-            bottom: 340px;
-            font-size: 21px;
-            color: transparent;
-        }
-    </style>
+  <meta charset='UTF-8'>
+  <title></title>
 </head>
-<body>
-    <div class="container">
-        <img src="https://vignette.wikia.nocookie.net/gamegrumps/images/b/b2/DingDong.jpg/revision/latest?cb=20170321233123" class="site-img" alt = "Video game alien"></img>
-        <div class="hide-img-overlay">Dingus Dongus</div>
-    </div>
 
-    <div class="container">
-        <img src="https://vignette.wikia.nocookie.net/oneyplays/images/7/77/Julian.png/revision/latest?cb=20170701151938" class="site-img" alt = "One-eyed gay Mexican"></img>
-        <div class="hide-img-overlay">Joolian Mexicanus</div>
-    </div>
+<body>
+
+  <div class="widget">
+      <input type="text" id="chat-input">
+      <button id="msgBtn" onclick="sendMessage()">Submit</button>
+
+      <div class='chat-wrapper'></div>
+  </div>
 
 </body>
+
 <script>
-    const imgs = document.querySelectorAll('.site-img');
+    function sendMessage() {
+        const newDiv = document.createElement('div');
+        newDiv.classList.add('chatMsg');
+        let chatInput = document.querySelector('#chat-input').value;
+        const newContent = document.createTextNode(chatInput);
+        newDiv.appendChild(newContent);
 
-    imgs.forEach(img => {
-        img.addEventListener('mouseover', (event) => {
-            const captionElement = event.target.parentElement.children[1];
-            captionElement.className = 'show-img-overlay';
-        })
-    })
+        const widget = document.querySelector('.widget');
+        let chatWrapper = document.querySelector('#chat-wrapper');
+        document.querySelector('#chat-input').value = '';
 
-    imgs.forEach(img => {
-        img.addEventListener('mouseout', (event) => {
-            const captionElement = event.target.parentElement.children[1];
-            captionElement.className = 'hide-img-overlay';
-        })
-    })
-    
+        if (document.querySelectorAll('.chatMsg').length > 0) {
+            chatWrapper = document.querySelectorAll('.chatMsg')[0];
+        }
+
+        widget.insertBefore(newDiv, chatWrapper);
+    }
 </script>
+
 </html>
