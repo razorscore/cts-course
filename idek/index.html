@@ -4,37 +4,44 @@
 <head>
   <meta charset='UTF-8'>
   <title></title>
+
+  <style>
+      .todoItem:hover {
+          cursor: pointer;
+      }
+  </style>
 </head>
 
 <body>
+    <div class="todos">
+        <h2>Pending Todos</h2>
+        <ul>
+            <li class="todoItem">Brick a lick.</li>
+            <li class="todoItem">Creak a beak.</li>
+            <li class="todoItem">Dunk a bunk.</li>
+            <li class="todoItem">Crush a lush.</li>
+            <li class="todoItem">Cry a lie.</li>
+        </ul>
+    </div>
 
-  <div class="widget">
-      <input type="text" id="chat-input">
-      <button id="msgBtn" onclick="sendMessage()">Submit</button>
-
-      <div class='chat-wrapper'></div>
-  </div>
-
+    <h2>Completed Todos</h2>
+    <ul class="completedTodoWrapper">
+        <div class="completed-footer"></div>
+    </ul>
 </body>
 
 <script>
-    function sendMessage() {
-        const newDiv = document.createElement('div');
-        newDiv.classList.add('chatMsg');
-        let chatInput = document.querySelector('#chat-input').value;
-        const newContent = document.createTextNode(chatInput);
-        newDiv.appendChild(newContent);
+    const todos = document.querySelectorAll('.todoItem');
+    const completedTodos = document.querySelector('.completed');
+    const completedTodoWrapper = document.querySelector('.completedTodoWrapper');
 
-        const widget = document.querySelector('.widget');
-        let chatWrapper = document.querySelector('#chat-wrapper');
-        document.querySelector('#chat-input').value = '';
-
-        if (document.querySelectorAll('.chatMsg').length > 0) {
-            chatWrapper = document.querySelectorAll('.chatMsg')[0];
-        }
-
-        widget.insertBefore(newDiv, chatWrapper);
-    }
+    todos.forEach(todo => todo.addEventListener('click', (event) => {
+        let completedTodo = document.createElement('li');
+        let todoContent = document.createTextNode(todo.textContent);
+        completedTodo.appendChild(todoContent);
+        completedTodoWrapper.insertBefore(completedTodo, completedTodos);
+        todo.remove();
+    }))
 </script>
 
 </html>
