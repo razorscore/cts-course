@@ -31,8 +31,8 @@ body {
     align-items: center;
 }
 
-.container-results {
-    margin-top: 2em;
+.withShadow {
+    box-shadow: 2px 3px 20px 1px rgba(0, 0, 0, 0.2);
 }
 
 .home-page-logo {
@@ -45,19 +45,22 @@ body {
     filter: drop-shadow(0 0 50px rgba(0, 0, 0, 1));
 }
 
-.home-page-search-bar {
+.search-bar {
     grid-column: 1/-1;
     grid-row: 2;
 }
 
-.home-page-search-bar input{
+.search-bar input{
     width: 66vw;
-    height: 11.8rem;
     padding-left: 0.75em;
     background-color: #424242;
 }
 
-.home-page-search-bar input[type="text"] {
+.homepage-search-bar input{
+    height: 11.8rem;
+}
+
+.search-bar input[type="text"] {
     font-size: 2.5em;
     font-family: 'Font Awesome\ 5 Free', Arial, Helvetica, sans-serif;
     font-weight: 600;
@@ -67,18 +70,18 @@ body {
     border-radius: 0.5rem;
 }
 
-.home-page-search-bar input[type="text"]::placeholder {
+.search-bar input[type="text"]::placeholder {
     font-family: 'Font Awesome\ 5 Free', Arial, Helvetica, sans-serif;
     font-weight: 600;
     color: #686868;
 }
 
-.home-page-search-bar input[type="text"]:focus {
+.search-bar input[type="text"]:focus {
     outline: none;
     box-shadow: 2px 3px 100px 1px rgba(0, 0, 0, 0.5);
 }
 
-.home-page-search-bar p {
+.search-bar p {
     color: #b3b3b3;
     font-size: 1.4rem;
     line-height: 1.7rem;
@@ -109,8 +112,7 @@ body {
     border: 0px solid transparent;
     border-radius: 1rem;
     padding: 0.5rem;
-    box-shadow: 2px 3px 20px 1px rgba(0, 0, 0, 0.2);
-    cursor: default;
+    cursor: pointer;
 }
 
 .recent-post:hover {
@@ -118,7 +120,7 @@ body {
 }
 
 .recent-post-title {
-    color: #999999;
+    color: #94FFF8;
     font-size: 1.4rem;
 }
 
@@ -129,6 +131,28 @@ body {
 }
 
 /* Results Page Styles */
+.container-results {
+    margin-top: 4em;
+}
+
+.results-logo {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.results-logo img {
+    width: 10rem;
+    filter: drop-shadow(0 0 30px rgba(0, 0, 0, 1));
+}
+
+.results-search-bar input {
+    height: 5rem;
+    margin-bottom: 1em;
+    margin-top: 3em;
+}
 
 .results-posts-wrapper {
     grid-row: 3;
@@ -147,12 +171,34 @@ body {
 
 .category-name {
     color: #686868;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     font-size: 1.4rem;
+    cursor: default;
 }
 
 .result-post-title a {
-    color: white;
+    color: #94FFF8;
     text-decoration: none;
     font-size: 1.8rem;
+}
+
+.result-post-title a:hover {
+    font-weight: 600;
+}
+
+.result-post-links-wrapper {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 2rem;
+}
+
+.result-post-links {
+    color: #999999;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.result-post-links:hover {
+    text-decoration: underline;
 }
